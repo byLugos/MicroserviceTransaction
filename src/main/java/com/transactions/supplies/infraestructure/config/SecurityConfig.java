@@ -21,7 +21,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/supplies/**").hasRole("ADMIN")
+                        .requestMatchers("/supplies/**").hasRole("AUXBODEGA")
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
