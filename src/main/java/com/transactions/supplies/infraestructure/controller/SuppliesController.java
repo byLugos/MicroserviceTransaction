@@ -22,5 +22,4 @@ public class SuppliesController {
         SuppliesResponseDTO createdSupply = suppliesHandler.createOrUpdateSupplies(suppliesRequestDTO);
         return new ResponseEntity<>(createdSupply, HttpStatus.CREATED);
     }
-
 }

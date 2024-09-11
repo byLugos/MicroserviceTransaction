@@ -3,6 +3,8 @@ import com.transactions.supplies.domain.exceptions.InvalidSupplyName;
 import com.transactions.supplies.domain.model.Supplies;
 import com.transactions.supplies.domain.ports.api.SuppliesIn;
 import com.transactions.supplies.domain.ports.spi.SuppliesOut;
+import com.transactions.supplies.domain.utils.Constants;
+
 import java.util.List;
 import java.util.Optional;
 public class SuppliesService implements SuppliesIn {
@@ -13,7 +15,7 @@ public class SuppliesService implements SuppliesIn {
     @Override
     public Supplies createSupply(String name, int quantity) {
         if (name == null || name.trim().isEmpty()) {
-            throw new InvalidSupplyName("El suministro no puede ser vacío.");
+            throw new InvalidSupplyName(Constants.SUPPLY_NAME_CANNOT_BE_EMPTY);
         }
         Optional<Supplies> existingSupplyOpt = suppliesOut.existsByName(name);
         Supplies supply;

@@ -3,6 +3,7 @@ package com.transactions.supplies.application.handler;
 import com.transactions.supplies.application.dto.request.SuppliesRequestDTO;
 import com.transactions.supplies.application.dto.response.SuppliesResponseDTO;
 import com.transactions.supplies.application.mapper.SuppliesMapper;
+import com.transactions.supplies.application.utils.Constants;
 import com.transactions.supplies.domain.model.Supplies;
 import com.transactions.supplies.domain.ports.api.SuppliesIn;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +16,10 @@ public class SuppliesHandler {
     private final SuppliesIn suppliesIn;
     public SuppliesResponseDTO createOrUpdateSupplies(SuppliesRequestDTO dto) {
         if (dto == null || dto.getName().isBlank()) {
-            throw new IllegalArgumentException("El nombre del suministro no puede estar vacío.");
+            throw new IllegalArgumentException(Constants.SUPPLY_NAME_CANNOT_BE_EMPTY);
         }
         if (dto.getQuantity() <= 0) {
-            throw new IllegalArgumentException("La cantidad debe ser mayor a 0.");
+            throw new IllegalArgumentException(Constants.SUPPLY_QUANTITY_MUST_BE_GREATER_THAN_ZERO);
         }
         Supplies supplies = suppliesMapper.toDomain(dto);
         Supplies createdSupplies = suppliesIn.createSupply(supplies.getName(), supplies.getQuantity());
