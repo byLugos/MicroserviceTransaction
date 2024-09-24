@@ -13,6 +13,5 @@ import lombok.Setter;
 public class SuppliesRequestDTO {
     @NotBlank(message = Constants.SUPPLY_NAME_NOT_BLANK)
     private String name;
-    @Positive(message = Constants.SUPPLY_QUANTITY_POSITIVE)
     private int quantity;
 }

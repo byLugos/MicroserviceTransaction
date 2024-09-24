@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "supplies")
 @Getter
@@ -20,5 +22,9 @@ public class SuppliesEntity {
     private String name;
     @Column(nullable = false)
     private int quantity;
+    @Column(nullable = false)
+    private LocalDate creationDate;
+    @Column(nullable = false)
+    private LocalDate restockingDate;
 }
 
